@@ -52,8 +52,27 @@ function isFourOfAKind(dices){
   return found;
 }
 
-function isFullHouse() {
-  return false;
+function isFullHouse(dices) {
+  let foundDouble = false,
+      foundTriple = false,
+      counts = {};
+
+  for(let i=0; i < dices.length; i++){
+    if (counts[dices[i]]){
+      counts[dices[i]] += 1
+    } else {
+      counts[dices[i]] = 1
+    }
+  }
+  for (let prop in counts){
+    if(counts[prop] === 2){
+      foundDouble = true;
+    }
+    if(counts[prop] === 3){
+      foundTriple = true;
+    }
+  }
+  return foundDouble && foundTriple;
 }
 
 module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse };
