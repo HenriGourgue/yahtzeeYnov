@@ -1,4 +1,4 @@
-const {roll, isThreeOfAKind, isFourOfAKind} = require('./main');
+const {roll, isThreeOfAKind, isFourOfAKind, isFullHouse} = require('./main');
 
 describe('Rolling dices', () => {
     test('Checking if we have 5 dices', () => {
@@ -39,6 +39,13 @@ describe('Testing Combination', () => {
     });
     test('Test not Four of a kind', () => {
         expect(isFourOfAKind([1,2,2,2,5])).toBe(false);
+    });
+
+    test('Test Full house', () => {
+        expect(isFullHouse([1,1,2,2,2])).toBe(true);
+    });
+    test('Test not Full house', () => {
+        expect(isFullHouse([1,2,3,4,2])).toBe(false);
     });
 
 });

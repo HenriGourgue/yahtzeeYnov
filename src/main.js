@@ -52,4 +52,8 @@ function isFourOfAKind(dices){
   return found;
 }
 
-module.exports = { roll, isThreeOfAKind, isFourOfAKind };
+function isFullHouse() {
+  return false;
+}
+
+module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse };
