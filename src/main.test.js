@@ -37,5 +37,8 @@ describe('Testing Combination', () => {
     test('Test Four of a king', () => {
         expect(isFourOfAKing([1,2,2,2,2])).toBe(true);
     });
+    test('Test not Four of a king', () => {
+        expect(isFourOfAKing([1,2,2,2,5])).toBe(false);
+    });
 
 });
