@@ -1,4 +1,4 @@
-const {roll, isThreeOfAKing, isFourOfAKing} = require('./main');
+const {roll, isThreeOfAKind, isFourOfAKind} = require('./main');
 
 describe('Rolling dices', () => {
     test('Checking if we have 5 dices', () => {
@@ -27,18 +27,18 @@ describe('Rolling dices', () => {
 });
 
 describe('Testing Combination', () => {
-    test('Test Three of a king', () => {
-        expect(isThreeOfAKing([1,2,2,2,5])).toBe(true);
+    test('Test Three of a kind', () => {
+        expect(isThreeOfAKind([1,2,2,2,5])).toBe(true);
     });
-    test('Test not Three of a king', () => {
-        expect(isThreeOfAKing([1,2,4,2,5])).toBe(false);
+    test('Test not Three of a kind', () => {
+        expect(isThreeOfAKind([1,2,4,2,5])).toBe(false);
     });
 
-    test('Test Four of a king', () => {
-        expect(isFourOfAKing([1,2,2,2,2])).toBe(true);
+    test('Test Four of a kind', () => {
+        expect(isFourOfAKind([1,2,2,2,2])).toBe(true);
     });
-    test('Test not Four of a king', () => {
-        expect(isFourOfAKing([1,2,2,2,5])).toBe(false);
+    test('Test not Four of a kind', () => {
+        expect(isFourOfAKind([1,2,2,2,5])).toBe(false);
     });
 
 });

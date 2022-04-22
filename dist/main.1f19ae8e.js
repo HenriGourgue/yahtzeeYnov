@@ -131,7 +131,7 @@ function roll() {
   return dices;
 }
 
-function isThreeOfAKing(a) {
+function isThreeOfAKind(a) {
   var counts = {};
 
   for (var i = 0; i < a.length; i++) {
@@ -153,10 +153,10 @@ function isThreeOfAKing(a) {
   return false;
 }
 
-isThreeOfAKing([1, 2, 2, 2, 5]);
+isThreeOfAKind([1, 2, 2, 2, 5]);
 module.exports = {
   roll: roll,
-  isThreeOfAKing: isThreeOfAKing
+  isThreeOfAKing: isThreeOfAKind
 };
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];

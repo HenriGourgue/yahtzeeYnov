@@ -10,7 +10,7 @@ function roll(nbDices = 5){
   return dices;
 }
 
-function isThreeOfAKing(dices){
+function isThreeOfAKind(dices){
 
   let found = false;
 
@@ -31,7 +31,7 @@ function isThreeOfAKing(dices){
   return found;
 }
 
-function isFourOfAKing(dices){
+function isFourOfAKind(dices){
 
   let found = false;
 
@@ -52,4 +52,4 @@ function isFourOfAKing(dices){
   return found;
 }
 
-module.exports = { roll, isThreeOfAKing, isFourOfAKing };
+module.exports = { roll, isThreeOfAKind, isFourOfAKind };
