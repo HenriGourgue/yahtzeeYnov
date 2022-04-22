@@ -1,14 +1,11 @@
 'use strict';
 
-function roll(){
+function roll(nbDices = 5){
 
-  const firstDice = Math.floor(Math.random() * 6) + 1;
-  const secondDice = Math.floor(Math.random() * 6) + 1;
-  const thirdDice = Math.floor(Math.random() * 6) + 1;
-  const fourthDice = Math.floor(Math.random() * 6) + 1;
-  const fifthDice = Math.floor(Math.random() * 6) + 1;
-
-  const dices = [firstDice, secondDice, thirdDice, fourthDice, fifthDice];
+  let dices = [];
+  for (let i = 1; i <= nbDices; i++) {
+    dices.push(Math.floor(Math.random() * 6) + 1);
+  }
 
   return dices;
 }
