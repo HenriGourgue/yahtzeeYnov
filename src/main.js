@@ -1,11 +1,16 @@
 'use strict';
 
-function counter() {
-  let seconds = 0;
-  setInterval(() => {
-    seconds += 1;
-    document.getElementById('app').innerHTML = `<p>You have been here for ${seconds} seconds.</p>`;
-  }, 1000);
+function roll(){
+
+  const firstDice = Math.floor(Math.random() * 6) + 1;
+  const secondDice = Math.floor(Math.random() * 6) + 1;
+  const thirdDice = Math.floor(Math.random() * 6) + 1;
+  const fourthDice = Math.floor(Math.random() * 6) + 1;
+  const fifthDice = Math.floor(Math.random() * 6) + 1;
+
+  const dices = [firstDice, secondDice, thirdDice, fourthDice, fifthDice];
+
+  return dices;
 }
 
-counter();
+module.exports = { roll };
