@@ -24,7 +24,6 @@ function isThreeOfAKing(dices){
     }
   }
   for (let prop in counts){
-      console.log(prop + " counted: " + counts[prop] + " times.")
       if(counts[prop] > 2){
         found = true;
       }
@@ -34,7 +33,23 @@ function isThreeOfAKing(dices){
 
 function isFourOfAKing(dices){
 
-  return true;
+  let found = false;
+
+  let counts = {}
+
+  for(let i=0; i < dices.length; i++){
+    if (counts[dices[i]]){
+      counts[dices[i]] += 1
+    } else {
+      counts[dices[i]] = 1
+    }
+  }
+  for (let prop in counts){
+    if(counts[prop] > 3){
+      found = true;
+    }
+  }
+  return found;
 }
 
 module.exports = { roll, isThreeOfAKing, isFourOfAKing };
