@@ -10,4 +10,8 @@ function roll(nbDices = 5){
   return dices;
 }
 
-module.exports = { roll };
+function isThreeOfAKing(dices){
+  return false;
+}
+
+module.exports = { roll, isThreeOfAKing };

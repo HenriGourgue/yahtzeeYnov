@@ -1,15 +1,15 @@
-const {roll} = require('./main');
+const {roll, isThreeOfAKing} = require('./main');
 
 describe('Rolling dices', () => {
     test('Checking if we have 5 dices', () => {
         const dices = roll();
         expect(dices.length).toBe(5);
     });
-
     test('Checking if we have 3 dices', () => {
         const dices = roll(3);
         expect(dices.length).toBe(3);
     });
+
     test('Checking every dice value', () => {
         var state = true;
 
@@ -23,5 +23,11 @@ describe('Rolling dices', () => {
         }
 
         expect(state).toBe(true);
+    });
+});
+
+describe('Testing Combination', () => {
+    test('Test Three of a king', () => {
+        expect(isThreeOfAKing([1,2,2,2,5])).toBe(true);
     });
 });
