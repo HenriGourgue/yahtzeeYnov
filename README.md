@@ -1,0 +1,2 @@
+# yahtzee
+A JavaScript project
