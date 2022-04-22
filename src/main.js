@@ -10,8 +10,26 @@ function roll(nbDices = 5){
   return dices;
 }
 
-function isThreeOfAKing(dices){
-  return false;
+function isThreeOfAKing(a){
+
+  let found = false;
+
+  let counts = {}
+
+  for(let i=0; i < a.length; i++){
+    if (counts[a[i]]){
+      counts[a[i]] += 1
+    } else {
+      counts[a[i]] = 1
+    }
+  }
+  for (let prop in counts){
+      console.log(prop + " counted: " + counts[prop] + " times.")
+      if(counts[prop] > 2){
+        found = true;
+      }
+  }
+  return found;
 }
 
 module.exports = { roll, isThreeOfAKing };

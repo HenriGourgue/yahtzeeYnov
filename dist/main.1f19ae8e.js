@@ -124,15 +124,39 @@ function roll() {
   var nbDices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
   var dices = [];
 
-  for (var i = 0; i <= nbDices; i++) {
+  for (var i = 1; i <= nbDices; i++) {
     dices.push(Math.floor(Math.random() * 6) + 1);
   }
 
   return dices;
 }
 
+function isThreeOfAKing(a) {
+  var counts = {};
+
+  for (var i = 0; i < a.length; i++) {
+    if (counts[a[i]]) {
+      counts[a[i]] += 1;
+    } else {
+      counts[a[i]] = 1;
+    }
+  }
+
+  for (var prop in counts) {
+    console.log(prop + " counted: " + counts[prop] + " times.");
+
+    if (counts[prop] > 2) {
+      console.log("Un aussi beau cul que celui de Michaela");
+    }
+  }
+
+  return false;
+}
+
+isThreeOfAKing([1, 2, 2, 2, 5]);
 module.exports = {
-  roll: roll
+  roll: roll,
+  isThreeOfAKing: isThreeOfAKing
 };
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -162,7 +186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54771" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
