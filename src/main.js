@@ -75,4 +75,8 @@ function isFullHouse(dices) {
   return foundDouble && foundTriple;
 }
 
-module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse };
+function isSmallStraigh(){
+  return false;
+}
+
+module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh };

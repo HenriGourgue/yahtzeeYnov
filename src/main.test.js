@@ -1,4 +1,4 @@
-const {roll, isThreeOfAKind, isFourOfAKind, isFullHouse} = require('./main');
+const {roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh} = require('./main');
 
 describe('Rolling dices', () => {
     test('Checking if we have 5 dices', () => {
@@ -26,7 +26,7 @@ describe('Rolling dices', () => {
     });
 });
 
-describe('Testing Combination', () => {
+describe('Testing Combinations', () => {
     test('Test Three of a kind', () => {
         expect(isThreeOfAKind([1,2,2,2,5])).toBe(true);
     });
@@ -46,6 +46,13 @@ describe('Testing Combination', () => {
     });
     test('Test not Full house', () => {
         expect(isFullHouse([1,2,3,4,2])).toBe(false);
+    });
+
+    test('Test Small straigh', () => {
+        expect(isSmallStraigh([1,3,4,5,6])).toBe(true);
+    });
+    test('Test not Small straigh', () => {
+        expect(isSmallStraigh([1,2,3,3,2])).toBe(false);
     });
 
 });
