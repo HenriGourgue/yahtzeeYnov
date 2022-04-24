@@ -9,7 +9,8 @@ const {
     isTwos,
     isThrees,
     isFours,
-    isFives
+    isFives,
+    isSixes
 } = require('./combination');
 
 function getScore(dices) {
@@ -19,6 +20,7 @@ function getScore(dices) {
         threes: null,
         fours: null,
         fives: null,
+        sixes: null,
         threeOfKind: null,
         fourOfKind: null,
         fullHouse: null,
@@ -51,6 +53,10 @@ function getScore(dices) {
     if (isFives(dices)) {
         let fives = dices.filter(dice => dice === 5)
         score.fives = getArraySum(fives,5);
+    }
+    if (isSixes(dices)) {
+        let sixes = dices.filter(dice => dice === 6)
+        score.sixes = getArraySum(sixes,6);
     }
 
     if (isThreeOfAKind(dices)) {
