@@ -1,3 +1,5 @@
 'use strict';
+const {roll} = require('./roll');
+const {getScore} = require('./score');
 
-console.log('MASTER TEST')
+console.log(getScore(roll()));

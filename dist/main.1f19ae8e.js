@@ -117,11 +117,346 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
+})({"roll.js":[function(require,module,exports) {
+function roll() {
+  var nbDices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
+  var dices = [];
+
+  for (var i = 1; i <= nbDices; i++) {
+    dices.push(Math.floor(Math.random() * 6) + 1);
+  }
+
+  return dices;
+}
+
+module.exports = {
+  roll: roll
+};
+},{}],"utils/utils.js":[function(require,module,exports) {
+function sortAscending(dices) {
+  var tmp; //Sort dices array
+
+  for (var i = 0; i <= dices.length; i -= -1) {
+    for (var j = dices.length - 1; j >= i + 1; j--) {
+      if (dices[j] < dices[i]) {
+        tmp = dices[i];
+        dices[i] = dices[j];
+        dices[j] = tmp;
+      }
+    }
+  }
+
+  return dices;
+}
+
+module.exports = {
+  sortAscending: sortAscending
+};
+},{}],"combination.js":[function(require,module,exports) {
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+var _require = require('./utils/utils'),
+    sortAscending = _require.sortAscending;
+
+function isThreeOfAKind(dices) {
+  var found = false;
+  var counts = {};
+
+  for (var i = 0; i < dices.length; i++) {
+    if (counts[dices[i]]) {
+      counts[dices[i]] += 1;
+    } else {
+      counts[dices[i]] = 1;
+    }
+  }
+
+  for (var prop in counts) {
+    if (counts[prop] > 2) {
+      found = true;
+    }
+  }
+
+  return found;
+}
+
+function isFourOfAKind(dices) {
+  var found = false;
+  var counts = {};
+
+  for (var i = 0; i < dices.length; i++) {
+    if (counts[dices[i]]) {
+      counts[dices[i]] += 1;
+    } else {
+      counts[dices[i]] = 1;
+    }
+  }
+
+  for (var prop in counts) {
+    if (counts[prop] > 3) {
+      found = true;
+    }
+  }
+
+  return found;
+}
+
+function isFullHouse(dices) {
+  var foundDouble = false,
+      foundTriple = false,
+      counts = {};
+
+  for (var i = 0; i < dices.length; i++) {
+    if (counts[dices[i]]) {
+      counts[dices[i]] += 1;
+    } else {
+      counts[dices[i]] = 1;
+    }
+  }
+
+  for (var prop in counts) {
+    if (counts[prop] === 2) {
+      foundDouble = true;
+    }
+
+    if (counts[prop] === 3) {
+      foundTriple = true;
+    }
+  }
+
+  return foundDouble && foundTriple;
+}
+
+function isSmallStraight(dices) {
+  //Sort dices array
+  dices = sortAscending(dices); // Get rid of duplicates
+
+  dices = _toConsumableArray(new Set(dices));
+  var result = true,
+      starting = 0; //Maybe got a straight starting at index 0
+
+  if (dices[1] === dices[0] + 1) {
+    starting = 0;
+  } //Maybe got a straight starting at index 1
+  else {
+    starting = 1;
+  } //Evaluating straight
+
+
+  for (var k = starting; k < starting + 3; k -= -1) {
+    if (!(dices[k] === dices[k + 1] - 1)) {
+      result = false;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function isLargeStraight(dices) {
+  //Sort dices array
+  dices = sortAscending(dices); //Evaluating straigh
+
+  var result = true;
+
+  for (var k = 0; k < dices.length - 1; k -= -1) {
+    if (!(dices[k] === dices[k + 1] - 1)) {
+      result = false;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function isYahtzee(dices) {
+  var result = true;
+
+  for (var i = 0; i < dices.length - 1; i -= -1) {
+    if (!(dices[i] === dices[i + 1])) {
+      result = false;
+      break;
+    }
+  }
+
+  return result;
+}
+
+function isOnes(dices) {
+  return dices.includes(1);
+}
+
+function isTwos(dices) {
+  return dices.includes(2);
+}
+
+function isThrees(dices) {
+  return dices.includes(3);
+}
+
+function isFours(dices) {
+  return dices.includes(4);
+}
+
+function isFives(dices) {
+  return dices.includes(5);
+}
+
+function isSixes(dices) {
+  return dices.includes(6);
+}
+
+module.exports = {
+  isThreeOfAKind: isThreeOfAKind,
+  isFourOfAKind: isFourOfAKind,
+  isFullHouse: isFullHouse,
+  isSmallStraight: isSmallStraight,
+  isLargeStraight: isLargeStraight,
+  isYahtzee: isYahtzee,
+  isOnes: isOnes,
+  isTwos: isTwos,
+  isThrees: isThrees,
+  isFours: isFours,
+  isFives: isFives,
+  isSixes: isSixes
+};
+},{"./utils/utils":"utils/utils.js"}],"score.js":[function(require,module,exports) {
+var _require = require('./combination'),
+    isThreeOfAKind = _require.isThreeOfAKind,
+    isFourOfAKind = _require.isFourOfAKind,
+    isFullHouse = _require.isFullHouse,
+    isSmallStraight = _require.isSmallStraight,
+    isLargeStraight = _require.isLargeStraight,
+    isYahtzee = _require.isYahtzee,
+    isOnes = _require.isOnes,
+    isTwos = _require.isTwos,
+    isThrees = _require.isThrees,
+    isFours = _require.isFours,
+    isFives = _require.isFives,
+    isSixes = _require.isSixes;
+
+function getScore(dices) {
+  var score = {
+    ones: null,
+    twos: null,
+    threes: null,
+    fours: null,
+    fives: null,
+    sixes: null,
+    threeOfKind: null,
+    fourOfKind: null,
+    fullHouse: null,
+    smallStraight: null,
+    largeStraight: null,
+    chance: null,
+    yahtzee: null
+  };
+
+  if (isOnes(dices)) {
+    var ones = dices.filter(function (dice) {
+      return dice === 1;
+    });
+    score.ones = getArraySum(ones, 1);
+  }
+
+  if (isTwos(dices)) {
+    var twos = dices.filter(function (dice) {
+      return dice === 2;
+    });
+    score.twos = getArraySum(twos, 2);
+  }
+
+  if (isThrees(dices)) {
+    var threes = dices.filter(function (dice) {
+      return dice === 3;
+    });
+    score.threes = getArraySum(threes, 3);
+  }
+
+  if (isFours(dices)) {
+    var fours = dices.filter(function (dice) {
+      return dice === 4;
+    });
+    score.fours = getArraySum(fours, 4);
+  }
+
+  if (isFives(dices)) {
+    var fives = dices.filter(function (dice) {
+      return dice === 5;
+    });
+    score.fives = getArraySum(fives, 5);
+  }
+
+  if (isSixes(dices)) {
+    var sixes = dices.filter(function (dice) {
+      return dice === 6;
+    });
+    score.sixes = getArraySum(sixes, 6);
+  }
+
+  if (isThreeOfAKind(dices)) {
+    score.threeOfKind = getArraySum(dices);
+  }
+
+  if (isFourOfAKind(dices)) {
+    score.fourOfKind = getArraySum(dices);
+  }
+
+  if (isFullHouse(dices)) {
+    score.fullHouse = 25;
+  }
+
+  if (isSmallStraight(dices)) {
+    score.smallStraight = 30;
+  }
+
+  if (isLargeStraight(dices)) {
+    score.largeStraight = 40;
+  }
+
+  if (isYahtzee(dices)) {
+    score.yahtzee = 50;
+  }
+
+  score.chance = getArraySum(dices);
+  return score;
+}
+
+function getArraySum(array) {
+  var searchedValue = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+  if (searchedValue) return array.length * searchedValue;
+  var score = 0;
+
+  for (var i = 0; i < array.length; i++) {
+    score += array[i];
+  }
+
+  return score;
+}
+
+module.exports = {
+  getScore: getScore
+};
+},{"./combination":"combination.js"}],"main.js":[function(require,module,exports) {
 'use strict';
 
-console.log('MASTER TEST');
-},{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var _require = require('./roll'),
+    roll = _require.roll;
+
+var _require2 = require('./score'),
+    getScore = _require2.getScore;
+
+console.log(getScore(roll()));
+},{"./roll":"roll.js","./score":"score.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -149,7 +484,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49918" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50016" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
