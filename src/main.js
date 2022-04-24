@@ -8,7 +8,7 @@ var finalScore = 0;
 
 for (let combination in score){
     if(score[combination] != null){
-        console.log('You got a ', combination);
+        console.log('You got a ', combination + ' - ' + score[combination]);
         finalScore += score[combination];
     }
 }
