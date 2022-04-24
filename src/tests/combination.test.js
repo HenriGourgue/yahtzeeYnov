@@ -9,7 +9,8 @@ const {
     isTwos,
     isThrees,
     isFours,
-    isFives
+    isFives,
+    isSixes
 } = require('../combination');
 
 describe('Testing Combinations', () => {
@@ -88,6 +89,13 @@ describe('Testing Combinations', () => {
     })
     test('Has not Fives',()=>{
         expect(isFives([1,1,2,3,4])).toBe(false);
+    })
+
+    test('Has Sixes',()=>{
+        expect(isSixes([1,2,3,4,6])).toBe(true);
+    })
+    test('Has not Sixes',()=>{
+        expect(isSixes([1,1,2,3,4])).toBe(false);
     })
 
 });

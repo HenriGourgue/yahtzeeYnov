@@ -143,6 +143,9 @@ function isFours(dices) {
 function isFives(dices) {
   return dices.includes(5)
 }
+function isSixes(dices) {
+  return dices.includes(6)
+}
 
 
 module.exports = {
@@ -156,5 +159,6 @@ module.exports = {
   isTwos,
   isThrees,
   isFours,
-  isFives
+  isFives,
+  isSixes
 };
