@@ -1,30 +1,16 @@
-const {roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee} = require('./main');
-
-describe('Rolling dices', () => {
-    test('Checking if we have 5 dices', () => {
-        const dices = roll();
-        expect(dices.length).toBe(5);
-    });
-    test('Checking if we have 3 dices', () => {
-        const dices = roll(3);
-        expect(dices.length).toBe(3);
-    });
-
-    test('Checking every dice value', () => {
-        var state = true;
-
-        const dices = roll();
-
-        for(var  i = 0; i < dices.length; i -= -1){
-            if(dices[i] <= 0 || dices[i] > 6){
-                state = false;
-                return;
-            }
-        }
-
-        expect(state).toBe(true);
-    });
-});
+const {
+    isThreeOfAKind,
+    isFourOfAKind,
+    isFullHouse,
+    isSmallStraigh,
+    isLargeStraight,
+    isYahtzee,
+    isOnes,
+    isTwos,
+    isThrees,
+    isFours,
+    isFives
+} = require('../combination');
 
 describe('Testing Combinations', () => {
     test('Test Three of a kind', () => {
@@ -63,10 +49,24 @@ describe('Testing Combinations', () => {
     });
 
     test('Test yahtzee', () => {
-        expect(isYahtzee([3,1,2,4,5])).toBe(true);
+        expect(isYahtzee([1,1,1,1,1])).toBe(true);
     });
     test('Test not yahtzee', () => {
         expect(isYahtzee([1,2,3,3,2])).toBe(false);
     });
+
+    test('Has Ones',()=>{
+        expect(isOnes([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Ones',()=>{
+        expect(isOnes([2,2,3,4,5])).toBe(false);
+    })
+
+    test('Has Twos',()=>{
+        expect(isTwos([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Twos',()=>{
+        expect(isTwos([1,1,3,4,5])).toBe(false);
+    })
 
 });
