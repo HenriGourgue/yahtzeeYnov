@@ -65,7 +65,7 @@ function isFullHouse(dices) {
   return foundDouble && foundTriple;
 }
 
-function isSmallStraigh(dices){
+function isSmallStraight(dices){
 
   //Sort dices array
   dices = sortAscending(dices);
@@ -149,7 +149,7 @@ module.exports = {
   isThreeOfAKind,
   isFourOfAKind,
   isFullHouse,
-  isSmallStraigh,
+  isSmallStraight,
   isLargeStraight,
   isYahtzee,
   isOnes,

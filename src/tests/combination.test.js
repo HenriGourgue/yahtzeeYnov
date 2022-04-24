@@ -2,7 +2,7 @@ const {
     isThreeOfAKind,
     isFourOfAKind,
     isFullHouse,
-    isSmallStraigh,
+    isSmallStraight,
     isLargeStraight,
     isYahtzee,
     isOnes,
@@ -35,10 +35,10 @@ describe('Testing Combinations', () => {
     });
 
     test('Test Small straigh', () => {
-        expect(isSmallStraigh([3,1,6,4,5])).toBe(true);
+        expect(isSmallStraight([3,1,6,4,5])).toBe(true);
     });
     test('Test not Small straigh', () => {
-        expect(isSmallStraigh([1,2,3,3,2])).toBe(false);
+        expect(isSmallStraight([1,2,3,3,2])).toBe(false);
     });
 
     test('Test Large straigh', () => {
