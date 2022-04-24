@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>A JavaScript project</title>
+  <title>Yahtzee Ynov</title>
   <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+  <script>
+    if(!(window.location.href[window.location.href.length - 1] == "d")){
+      alert('IHM not implemented yet. Check browser console to see your roll result.');
+    }
+  </script>
   <h1>Yahtzee YNOV</h1>
-  COUCOU
-  <script src="main.js"></script>
+  <button onclick="reload();">Roll Again</button>
+
+  <script src="main.js">
+  </script>
+
+  <script>
+    function reload(){
+      window.location.replace('http://localhost:8080/index.html#reload');
+      window.location.reload();
+    }
+  </script>
 </body>
 </html>

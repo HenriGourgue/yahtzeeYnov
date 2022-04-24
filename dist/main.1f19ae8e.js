@@ -120,128 +120,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"main.js":[function(require,module,exports) {
 'use strict';
 
-function roll() {
-  var nbDices = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 5;
-  var dices = [];
-
-  for (var i = 1; i <= nbDices; i++) {
-    dices.push(Math.floor(Math.random() * 6) + 1);
-  }
-
-  return dices;
-}
-
-function isThreeOfAKind(dices) {
-  var found = false;
-  var counts = {};
-
-  for (var i = 0; i < dices.length; i++) {
-    if (counts[dices[i]]) {
-      counts[dices[i]] += 1;
-    } else {
-      counts[dices[i]] = 1;
-    }
-  }
-
-  for (var prop in counts) {
-    if (counts[prop] > 2) {
-      found = true;
-    }
-  }
-
-  return found;
-}
-
-function isFourOfAKind(dices) {
-  var found = false;
-  var counts = {};
-
-  for (var i = 0; i < dices.length; i++) {
-    if (counts[dices[i]]) {
-      counts[dices[i]] += 1;
-    } else {
-      counts[dices[i]] = 1;
-    }
-  }
-
-  for (var prop in counts) {
-    if (counts[prop] > 3) {
-      found = true;
-    }
-  }
-
-  return found;
-}
-
-function isFullHouse(dices) {
-  var foundDouble = false,
-      foundTriple = false,
-      counts = {};
-
-  for (var i = 0; i < dices.length; i++) {
-    if (counts[dices[i]]) {
-      counts[dices[i]] += 1;
-    } else {
-      counts[dices[i]] = 1;
-    }
-  }
-
-  for (var prop in counts) {
-    if (counts[prop] === 2) {
-      foundDouble = true;
-    }
-
-    if (counts[prop] === 3) {
-      foundTriple = true;
-    }
-  }
-
-  return foundDouble && foundTriple;
-}
-
-function isSmallStraigh(dices) {
-  var tmp; //Sort dices array
-
-  for (var i = 0; i <= dices.length; i -= -1) {
-    for (var j = dices.length - 1; j >= i + 1; j--) {
-      if (dices[j] < dices[i]) {
-        tmp = dices[i];
-        dices[i] = dices[j];
-        dices[j] = tmp;
-      }
-    }
-  }
-
-  var result = true;
-  var starting = 0; //Maybe got a straight starting at index 0
-
-  if (dices[i + 1] == dices[i] + 1) {
-    starting = 0;
-  } //Maybe got a straight starting at index 1
-  else {
-    starting = 1;
-  }
-
-  for (var k = starting; k < starting + 3; k -= -1) {
-    console.log('here', dices[k], dices[k] + 1);
-
-    if (!(dices[k] === dices[k] - 1)) {
-      result = false;
-      break;
-    }
-  }
-
-  return result;
-}
-
-var test = isSmallStraigh([3, 1, 6, 4, 5]);
-module.exports = {
-  roll: roll,
-  isThreeOfAKind: isThreeOfAKind,
-  isFourOfAKind: isFourOfAKind,
-  isFullHouse: isFullHouse,
-  isSmallStraigh: isSmallStraigh
-};
+console.log('MASTER TEST');
 },{}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -270,7 +149,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55260" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49918" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
