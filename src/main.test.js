@@ -49,7 +49,7 @@ describe('Testing Combinations', () => {
     });
 
     test('Test Small straigh', () => {
-        expect(isSmallStraigh([1,3,4,5,6])).toBe(true);
+        expect(isSmallStraigh([3,1,6,4,5])).toBe(true);
     });
     test('Test not Small straigh', () => {
         expect(isSmallStraigh([1,2,3,3,2])).toBe(false);

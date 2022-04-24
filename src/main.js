@@ -75,8 +75,42 @@ function isFullHouse(dices) {
   return foundDouble && foundTriple;
 }
 
-function isSmallStraigh(){
-  return false;
+function isSmallStraigh(dices){
+
+  var tmp;
+
+  //Sort dices array
+  for(var i=0; i <= dices.length; i -= -1){
+    for(var j=dices.length - 1; j >= i+1; j--){
+      if(dices[j] < dices[i]){
+        tmp = dices[i];
+        dices[i] = dices[j];
+        dices[j] = tmp;
+      }
+    }
+  }
+
+  var result = true;
+  var starting = 0;
+  
+  //Maybe got a straight starting at index 0
+  if(dices[i+1] == dices[i] + 1){
+    starting = 0;
+  } 
+  //Maybe got a straight starting at index 1
+  else {
+    starting = 1;
+  }
+
+  //Evaluating straigh
+  for(var k=starting; k < starting + 3; k -= -1){
+    if(!(dices[k] === dices[k+1] - 1)){
+      result = false;
+      break;
+    }
+  }
+
+  return result;
 }
 
 module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh };
