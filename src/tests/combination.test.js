@@ -1,4 +1,16 @@
-const {isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee} = require('../combination');
+const {
+    isThreeOfAKind,
+    isFourOfAKind,
+    isFullHouse,
+    isSmallStraigh,
+    isLargeStraight,
+    isYahtzee,
+    isOnes,
+    isTwos,
+    isThrees,
+    isFours,
+    isFives
+} = require('../combination');
 
 describe('Testing Combinations', () => {
     test('Test Three of a kind', () => {
@@ -42,5 +54,19 @@ describe('Testing Combinations', () => {
     test('Test not yahtzee', () => {
         expect(isYahtzee([1,2,3,3,2])).toBe(false);
     });
+
+    test('Has Ones',()=>{
+        expect(isOnes([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Ones',()=>{
+        expect(isOnes([2,2,3,4,5])).toBe(false);
+    })
+
+    test('Has Twos',()=>{
+        expect(isTwos([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Twos',()=>{
+        expect(isTwos([1,1,3,4,5])).toBe(false);
+    })
 
 });
