@@ -1,4 +1,4 @@
-const {isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee} = require('../main');
+const {isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee} = require('../combination');
 
 describe('Testing Combinations', () => {
     test('Test Three of a kind', () => {

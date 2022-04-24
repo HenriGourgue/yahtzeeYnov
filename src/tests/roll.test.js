@@ -1,4 +1,4 @@
-const {roll} = require('../main');
+const {roll} = require('../roll');
 
 describe('Rolling dices', () => {
     test('Checking if we have 5 dices', () => {
