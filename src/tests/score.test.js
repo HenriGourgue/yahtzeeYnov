@@ -1,8 +1,8 @@
-const getScore = require('../score');
+const {getScore} = require('../score');
 
 describe('Testing score',() => {
-    test('get score',() => {
-        expect(getScore([1,1,1,1,1])).toBe({
+    test('get score for [1,1,1,1,1]',() => {
+        expect(getScore([1,1,1,1,1])).toMatchObject({
             ones: 5,
             twos: null,
             threes: null,

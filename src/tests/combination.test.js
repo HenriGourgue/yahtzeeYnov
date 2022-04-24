@@ -34,17 +34,17 @@ describe('Testing Combinations', () => {
         expect(isFullHouse([1,2,3,4,2])).toBe(false);
     });
 
-    test('Test Small straigh', () => {
+    test('Test Small straight', () => {
         expect(isSmallStraight([3,1,6,4,5])).toBe(true);
     });
-    test('Test not Small straigh', () => {
+    test('Test not Small straight', () => {
         expect(isSmallStraight([1,2,3,3,2])).toBe(false);
     });
 
-    test('Test Large straigh', () => {
+    test('Test Large straight', () => {
         expect(isLargeStraight([3,1,2,4,5])).toBe(true);
     });
-    test('Test not Large straigh', () => {
+    test('Test not Large straight', () => {
         expect(isLargeStraight([1,2,3,3,2])).toBe(false);
     });
 
