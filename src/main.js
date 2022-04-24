@@ -113,4 +113,9 @@ function isSmallStraigh(dices){
   return result;
 }
 
-module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh };
+function isLargeStraight(){
+
+  return false;
+}
+
+module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight };
