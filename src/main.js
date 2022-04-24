@@ -1,4 +1,5 @@
 'use strict';
+const {sortAscending} = require('./utils/utils');
 
 function roll(nbDices = 5){
 
@@ -77,24 +78,14 @@ function isFullHouse(dices) {
 
 function isSmallStraigh(dices){
 
-  var tmp;
-
   //Sort dices array
-  for(var i=0; i <= dices.length; i -= -1){
-    for(var j=dices.length - 1; j >= i+1; j--){
-      if(dices[j] < dices[i]){
-        tmp = dices[i];
-        dices[i] = dices[j];
-        dices[j] = tmp;
-      }
-    }
-  }
+  dices = sortAscending(dices);
 
   var result = true;
   var starting = 0;
   
   //Maybe got a straight starting at index 0
-  if(dices[i+1] == dices[i] + 1){
+  if(dices[1] === dices[0] + 1){
     starting = 0;
   } 
   //Maybe got a straight starting at index 1
@@ -115,18 +106,8 @@ function isSmallStraigh(dices){
 
 function isLargeStraight(dices){
 
-  var tmp;
-
   //Sort dices array
-  for(var i=0; i <= dices.length; i -= -1){
-    for(var j=dices.length - 1; j >= i+1; j--){
-      if(dices[j] < dices[i]){
-        tmp = dices[i];
-        dices[i] = dices[j];
-        dices[j] = tmp;
-      }
-    }
-  }
+  dices = sortAscending(dices);
 
   //Evaluating straigh
   var result = true;
@@ -142,7 +123,16 @@ function isLargeStraight(dices){
 
 function isYahtzee(dices){
 
-  return false;
+  var result = true;
+
+  for(var i=0; i < dices.length - 1; i -= -1){
+    if(!(dices[i] === dices[i+1])){
+      result = false;
+      break;
+    }
+  }
+
+  return result;
 }
 
 module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee };

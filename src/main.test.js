@@ -63,7 +63,7 @@ describe('Testing Combinations', () => {
     });
 
     test('Test yahtzee', () => {
-        expect(isYahtzee([3,1,2,4,5])).toBe(true);
+        expect(isYahtzee([1,1,1,1,1])).toBe(true);
     });
     test('Test not yahtzee', () => {
         expect(isYahtzee([1,2,3,3,2])).toBe(false);
