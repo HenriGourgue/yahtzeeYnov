@@ -69,4 +69,25 @@ describe('Testing Combinations', () => {
         expect(isTwos([1,1,3,4,5])).toBe(false);
     })
 
+    test('Has Threes',()=>{
+        expect(isThrees([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Threes',()=>{
+        expect(isThrees([1,1,2,4,5])).toBe(false);
+    })
+
+    test('Has Fours',()=>{
+        expect(isFours([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Fours',()=>{
+        expect(isFours([1,1,2,3,5])).toBe(false);
+    })
+
+    test('Has Fives',()=>{
+        expect(isFives([1,2,3,4,5])).toBe(true);
+    })
+    test('Has not Fives',()=>{
+        expect(isFives([1,1,2,3,4])).toBe(false);
+    })
+
 });
