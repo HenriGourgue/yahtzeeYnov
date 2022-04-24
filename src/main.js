@@ -113,9 +113,31 @@ function isSmallStraigh(dices){
   return result;
 }
 
-function isLargeStraight(){
+function isLargeStraight(dices){
 
-  return false;
+  var tmp;
+
+  //Sort dices array
+  for(var i=0; i <= dices.length; i -= -1){
+    for(var j=dices.length - 1; j >= i+1; j--){
+      if(dices[j] < dices[i]){
+        tmp = dices[i];
+        dices[i] = dices[j];
+        dices[j] = tmp;
+      }
+    }
+  }
+
+  //Evaluating straigh
+  var result = true;
+  for(var k =0; k < dices.length - 1; k -= -1){
+    if(!(dices[k] === dices[k+1] - 1)){
+      result = false;
+      break;
+    }
+  }
+
+  return result;
 }
 
 module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight };
