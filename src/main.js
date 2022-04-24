@@ -140,4 +140,9 @@ function isLargeStraight(dices){
   return result;
 }
 
-module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight };
+function isYahtzee(dices){
+
+  return false;
+}
+
+module.exports = { roll, isThreeOfAKind, isFourOfAKind, isFullHouse, isSmallStraigh, isLargeStraight, isYahtzee };
